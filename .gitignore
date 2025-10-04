@@ -1,55 +1,39 @@
-# See http://help.github.com/ignore-files/ for more about ignoring files.
+# Node modules
+node_modules/
 
-# arquivo de pacote gerado pelo Webpack, relacionado ao cache gerado pelo Angular CLI durante o processo de construção
-.angular/cache/**/*.pack
+# Compilação e build
+dist/
+build/
+tmp/
+out-tsc/
 
-# compiled output
-/dist
-/tmp
-/out-tsc
-# Only exists if Bazel was run
-/bazel-out
+# IDEs e editores
+.vscode/
+.idea/
+*.swp
+*.swo
 
-# dependencies
-/node_modules
+# Sistema de logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
 
-# profiling files
-chrome-profiler-events*.json
-speed-measure-plugin*.json
+# Arquivos de cache
+.angular/cache/
+.cache/
+coverage/
+package-lock.json
 
-# IDEs and editors
-/.idea
-.project
-.classpath
-.c9/
-*.launch
-.settings/
-*.sublime-workspace
+# Ambientes
+.env
+.env.*
+!.env.example
 
-# IDE - VSCode
-.vscode/*
-!.vscode/settings.json
-!.vscode/tasks.json
-!.vscode/launch.json
-!.vscode/extensions.json
-.history/*
-
-# misc
-/.sass-cache
-/connect.lock
-/coverage
-/libpeerconnection.log
-npm-debug.log
-yarn-error.log
-testem.log
-/typings
-
-# System Files
+# Sistema operacional
 .DS_Store
 Thumbs.db
 
-# Angular build e cache
-.angular/
-dist/
-node_modules/
-
+# Repositórios temporários
+.sass-cache/
+bower_components/

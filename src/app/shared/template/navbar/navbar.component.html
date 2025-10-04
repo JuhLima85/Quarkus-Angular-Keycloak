@@ -1,0 +1,16 @@
+<nav class="sb-topnav navbar navbar-expand navbar-dark px-2">
+    <div class="d-flex align-items-center">
+      <a class="navbar-brand d-flex align-items-center m-0 p-0" href="home">
+        <img src="assets/img/logo.png" alt="Logo SIBRE" class="brand-logo mr-2" />
+        <h4 class="m-0 brand-text"></h4>
+        <button class="btn btn-link p-0" style="margin-left: 100px"  id="sidebarToggle" type="button" aria-label="Abrir menu">
+            <i class="fas fa-bars" style="color:#0051B4"></i>
+        </button>
+      </a>      
+    </div>
+    <div class="sb-sidenav-credencial ms-auto d-flex align-items-center">      
+      <div class="small me-4">Usuário: <span>{{ usuarioLogado.nomeUsuario }}</span></div>
+      <div class="small">Perfil: <span>{{ usuarioLogado.perfil }}</span></div>           
+    </div>        
+  </nav>
+  

@@ -1,0 +1,65 @@
+.sb-topnav {    
+    background-color:#6caafc;
+}
+
+.navbar-brand span {
+    color: #2f86e2;
+}
+
+.sb-topnav.navbar {
+    padding-top: .25rem;
+    padding-bottom: .25rem;
+    padding-left: .5rem;   
+    padding-right: .5rem;
+  }
+   
+  .navbar-brand .brand-logo {
+    height: 50px !important;  
+    width: auto !important;
+    display: block;          
+  }
+    
+  .navbar-brand .brand-text {
+    font-size: 1.70rem;   
+    line-height: 1;           
+    color: #fff;              
+  }  
+  
+  #sidebarToggle.btn-link {
+    padding: 0;               
+    line-height: 1;
+  }
+  #sidebarToggle i {
+    font-size: 1.1rem;       
+    color: #fff;
+  }
+
+  .sb-sidenav {    
+    background-color:#b2d0f7;
+}
+
+.sb-sidenav-credencial {
+    background-color:  #6caafc;
+    color:  #0051B4;    
+    font-size: 15px;
+    margin-left: auto;   
+    text-align: right;   
+    display: flex;       
+    align-items: center; 
+    gap: 20px;   
+    padding-right: 15px;
+}
+
+.sb-sidenav-credencial .small {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.sb-sidenav-foocredencialter .small span {
+    font-size: 14px;
+    font-weight: normal;
+}
+
+  
+  
+

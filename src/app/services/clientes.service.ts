@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 
-//import { Cliente } from "../model/usuario";
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { HttpClient} from '@angular/common/http';
@@ -10,11 +9,10 @@ import { Pessoa } from '../model/Pessoa';
 @Injectable({
   providedIn: 'root'
 })
-export class UsuarioService {
-  
+export class UsuarioService {  
   usuario: Usuario;  
   apiUrl: string = environment.apiUrlBase + '/api/usuarios'
-  apiUrlServico: string = environment.apiUrlBase + '/api/servicos-prestados'  
+  //apiUrlServico: string = environment.apiUrlBase + '/api/servicos-prestados'  
 
   constructor( private http: HttpClient) {  }  
   
@@ -41,9 +39,9 @@ export class UsuarioService {
     return this.http.get<any>(`${this.apiUrl}/${id}`);
   }  
 
+  // Editar
   deletar(cliente: Usuario) : Observable<any> {
     return this.http.delete<Usuario>(`${this.apiUrl}/${cliente.id}`);
-  }
-  
+  }  
 }
  

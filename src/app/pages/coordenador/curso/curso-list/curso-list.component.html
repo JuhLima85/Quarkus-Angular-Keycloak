@@ -35,10 +35,9 @@
                 <tbody>
                     <tr *ngFor="let curso of cursos" [ngClass]="{ 'nao-membro': !curso.membro }">
                         <td>{{ curso.nome }}</td>
-                        <td>{{ curso.email }}</td>
-                        <td>{{ curso.role }}</td>
+                        <td>{{ curso.ativo }}</td>                        
                         <td>
-                            <button class="btn btn-primary" [routerLink]="['/usuario/form', curso.id]" title="Editar">
+                            <button class="btn btn-primary" [routerLink]="['/coordenador/curso', curso.id]" title="Editar">
                                 <i class="fa fa-edit"></i>
                             </button>
                             <button class="btn btn-danger ml-2" (click)="exibirUsuarioModalDelet(curso)"

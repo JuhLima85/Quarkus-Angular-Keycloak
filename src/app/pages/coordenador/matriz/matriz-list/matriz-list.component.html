@@ -14,7 +14,7 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-md-12">
+        <div class="col-md-12" *ngIf="temRole('coordenador')">
             <button class="btn btn-success" (click)="novoCadastro()">
                 <i class="fa fa-plus"></i> Novo
             </button>
@@ -41,7 +41,7 @@
                         <td>{{ matrizCurricular.ativo }}</td>
                         <td>
                             <button class="btn btn-primary"
-                                [routerLink]="['/coordenador/matriz/form', matrizCurricular.id]" title="Editar">
+                                [routerLink]="['/coordenador/matriz', matrizCurricular.id]" title="Editar">
                                 <i class="fa fa-edit"></i>
                             </button>
                             <button class="btn btn-danger ml-2" (click)="exibirMatrizModalDelet(matrizCurricular)"

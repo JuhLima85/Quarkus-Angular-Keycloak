@@ -27,8 +27,7 @@ export class CursoListComponent  implements OnInit {
     document.getElementById('layoutSidenav_content')?.classList.add('semestre-ajuste');
     this.service.buscarCursos().subscribe({
       next: (resposta) => {        
-        this.cursos = resposta;
-        console.log('Curso carregado pelo ID:', resposta);
+        this.cursos = resposta;        
       },
       error: (err) => console.error('Erro ao buscar Curso:', err)
     });
@@ -47,7 +46,7 @@ export class CursoListComponent  implements OnInit {
     .deletar(this.cursoSelecionado)
     .subscribe(
       response => {
-        this.mensagemSucesso = 'Usuário deletado com sucesso!'
+        this.mensagemSucesso = 'Curso deletado com sucesso!'
         this.ngOnInit();
                   },
       erro => this.mensagemErro = 'Ocorreu um erro ao deletar o usuário.')

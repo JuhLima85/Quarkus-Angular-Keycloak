@@ -29,8 +29,7 @@ export class SemestreListComponent implements OnInit {
     document.getElementById('layoutSidenav_content')?.classList.add('semestre-ajuste');
     this.service.buscarSemestres().subscribe({
       next: (resposta) => {
-        this.semestres = resposta;
-        console.log('Semestre carregado pelo ID:', resposta);
+        this.semestres = resposta;        
       },
       error: (err) => console.error('Erro ao buscar semestres:', err)
     });

@@ -1,6 +1,7 @@
 export class Curso {
     id?: number;     
     nome: string;       
-    ativo: boolean;   
+    ativo: boolean;  
+    codigo: string;
   }
   

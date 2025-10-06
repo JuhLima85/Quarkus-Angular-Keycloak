@@ -26,8 +26,7 @@ export class ClientesListaComponent implements OnInit {
   ngOnInit(): void {
     this.service.buscarUsuarios().subscribe({
       next: (resposta) => {        
-        this.usuarios = resposta;
-        console.log('Usuário carregado pelo ID:', resposta);
+        this.usuarios = resposta;        
       },
       error: (err) => console.error('Erro ao buscar usuários:', err)
     });

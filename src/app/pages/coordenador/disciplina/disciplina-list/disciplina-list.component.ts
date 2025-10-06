@@ -27,8 +27,7 @@ export class DisciplinaListComponent implements OnInit {
     document.getElementById('layoutSidenav_content')?.classList.add('semestre-ajuste');
     this.service.buscarDisciplinas().subscribe({
       next: (resposta) => {
-        this.disciplinas = resposta;
-        console.log('Disciplina carregado pelo ID:', resposta);
+        this.disciplinas = resposta;        
       },
       error: (err) => console.error('Erro ao buscar disciplina:', err)
     });

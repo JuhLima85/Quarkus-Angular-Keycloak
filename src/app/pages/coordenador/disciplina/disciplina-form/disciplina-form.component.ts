@@ -32,12 +32,10 @@ export class DisciplinaFormComponent implements OnInit {
       this.id = params['id'];
       if (this.id) {
         this.service.buscarDisciplinaPorId(this.id).subscribe({
-          next: (response) => {
-            console.log('Disciplina carregado pelo ID:', response);
+          next: (response) => {            
             this.disciplina = response;
           },
-          error: (errorResponse) => {
-            console.error('Erro ao buscar disciplina:', errorResponse);
+          error: (errorResponse) => {            
             this.disciplina = new Disciplina();
           }
         });
@@ -47,48 +45,48 @@ export class DisciplinaFormComponent implements OnInit {
 
   voltarParaListagem() {
     this.router.navigate(['/coordenador/disciplina/lista'])
-  }
+  } 
 
-  onSubmit() {
-    console.error('Disciplina onSubmit:', this.disciplina);
-    if (!this.disciplina.nome || !this.disciplina.codigo) {
+  onSubmit() {       
+    const tratarErro = (errorResponse: any, acao: string) => {
       this.sucesso = false;
-      this.erros = ['Preencha todos os campos obrigatórios.'];
-      return;
-    }
+  
+      if (errorResponse?.error?.violations?.length) {        
+        this.erros = errorResponse.error.violations.map((v: any) => {         
+          const nomeCampo = v.field?.split('.')?.pop() || 'Campo';
+          const campoFormatado = nomeCampo.charAt(0).toUpperCase() + nomeCampo.slice(1);
+          return `${campoFormatado}: ${v.message}`;
+        });        
+      } else if (errorResponse?.error?.message) {
+        this.erros = [errorResponse.error.message];
+      } else {
+        this.erros = [`Erro ao ${acao} disciplina.`];
+      }
+    };
+     
     if (this.disciplina.id) {
-      this.service
-        .atualizar(this.disciplina)
-        .subscribe(response => {
+      this.service.atualizar(this.disciplina).subscribe({
+        next: () => {
           this.sucesso = true;
           this.mensagemSucesso = 'Cadastro atualizado com sucesso!';
           this.erros = null;
-        }, erroResponse => {
-          this.erros = ['Erro ao atualizar disciplina.']
-        })
-    } else {
+        },
+        error: (errorResponse) => tratarErro(errorResponse, 'atualizar')
+      });
+    }
+    
+    else {
       this.service.salvar(this.disciplina).subscribe({
         next: (response) => {
           this.sucesso = true;
           this.mensagemSucesso = 'Cadastro realizado com sucesso!';
           this.erros = null;
           this.disciplina = response;
-          console.log('Response: ', response);
         },
-        error: (errorResponse) => {
-          console.error("Erro completo recebido da API:", errorResponse);
-
-          if (errorResponse.error && errorResponse.error.message) {
-            this.erros = [errorResponse.error.message];
-          } else {
-            this.erros = ['Erro ao salvar disciplina.'];
-          }
-          console.log('Erro final exibido: ', this.erros);
-          this.sucesso = false;
-        }
+        error: (errorResponse) => tratarErro(errorResponse, 'salvar')
       });
     }
-  }
+  } 
 
   ngOnDestroy(): void {
     document.getElementById('layoutSidenav_content')?.classList.remove('semestre-ajuste');

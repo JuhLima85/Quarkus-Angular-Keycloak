@@ -31,12 +31,10 @@ export class UsuariosFormComponent implements OnInit {
       this.id = params['id'];
       if (this.id) {
         this.service.buscarUsuarioPorId(this.id).subscribe({
-          next: (response) => {
-            console.log('Usuario carregado pelo ID:', response);
+          next: (response) => {           
             this.usuario = response;
           },
-          error: (errorResponse) => {
-            console.error('Erro ao buscar usuario:', errorResponse);
+          error: (errorResponse) => {            
             this.usuario = new Usuario();
           }
         });
@@ -46,46 +44,52 @@ export class UsuariosFormComponent implements OnInit {
 
   voltarParaListagem() {
     this.router.navigate(['/usuario/lista'])
-  }
-  
-  onSubmit() {
-    console.error('Usuario onSubmit:', this.usuario);
+  }  
+
+  onSubmit() {   
     if (!this.usuario.nome || !this.usuario.role) {
       this.sucesso = false;
       this.erros = ['Preencha todos os campos obrigatórios.'];
       return;
     }
+      
+    const tratarErro = (errorResponse: any, acao: string) => {
+      this.sucesso = false;
+  
+      if (errorResponse?.error?.violations?.length) {        
+        this.erros = errorResponse.error.violations.map((v: any) => {         
+          const nomeCampo = v.field?.split('.')?.pop() || 'Campo';
+          const campoFormatado = nomeCampo.charAt(0).toUpperCase() + nomeCampo.slice(1);
+          return `${campoFormatado}: ${v.message}`;
+        });        
+      } else if (errorResponse?.error?.message) {
+        this.erros = [errorResponse.error.message];
+      } else {
+        this.erros = [`Erro ao ${acao} usuário.`];
+      }
+    };
+     
     if (this.usuario.id) {
-      this.service
-        .atualizar(this.usuario)
-        .subscribe(response => {
+      this.service.atualizar(this.usuario).subscribe({
+        next: () => {
           this.sucesso = true;
           this.mensagemSucesso = 'Cadastro atualizado com sucesso!';
           this.erros = null;
-        }, erroResponse => {
-          this.erros = ['Erro ao atualizar usuário.']
-        })
-    } else {
+        },
+        error: (errorResponse) => tratarErro(errorResponse, 'atualizar')
+      });
+    }
+    
+    else {
       this.service.salvar(this.usuario).subscribe({
         next: (response) => {
           this.sucesso = true;
           this.mensagemSucesso = 'Cadastro realizado com sucesso!';
           this.erros = null;
           this.usuario = response;
-          console.log('Response: ', response);
         },
-        error: (errorResponse) => {
-          console.error("Erro completo recebido da API:", errorResponse);
-
-          if (errorResponse.error && errorResponse.error.message) {
-            this.erros = [errorResponse.error.message];
-          } else {
-            this.erros = ['Erro ao salvar usuário.'];
-          }
-          console.log('Erro final exibido: ', this.erros);
-          this.sucesso = false;
-        }
+        error: (errorResponse) => tratarErro(errorResponse, 'salvar')
       });
     }
-  }
+  } 
 }

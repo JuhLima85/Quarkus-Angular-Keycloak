@@ -41,7 +41,7 @@
                             <td>{{ semestre.ativo }}</td>
                             <td>
                                 <button class="btn btn-primary"
-                                    [routerLink]="['/coordenador/semestre/form', semestre.id]" title="Editar">
+                                    [routerLink]="['/coordenador/semestre', semestre.id]" title="Editar">
                                     <i class="fa fa-edit"></i>
                                 </button>
                                 <button class="btn btn-danger ml-2" (click)="exibirSemestreModalDelet(semestre)"

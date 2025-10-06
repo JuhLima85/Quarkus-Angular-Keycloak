@@ -10,8 +10,7 @@ import { MatrizCurricular } from './../model/MatrizCurricular';
 })
 export class MatrizService {  
   matrizCurricular: MatrizCurricular;  
-  apiUrl: string = environment.apiUrlBase + '/api/matriz_curricular'
-  
+  apiUrl: string = environment.apiUrlBase + '/api/api/matrizes'  
 
   constructor( private http: HttpClient) {  }  
   

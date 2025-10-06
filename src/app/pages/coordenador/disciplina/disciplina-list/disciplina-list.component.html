@@ -40,7 +40,7 @@
                         <td>{{ disciplina.cargaHoraria }}</td>
                         <td>
                             <button class="btn btn-primary"
-                                [routerLink]="['/coordenador/disciplina/form', disciplina.id]" title="Editar">
+                                [routerLink]="['/coordenador/disciplina/', disciplina.id]" title="Editar">
                                 <i class="fa fa-edit"></i>
                             </button>
                             <button class="btn btn-danger ml-2" (click)="exibirUsuarioModalDelet(disciplina)"

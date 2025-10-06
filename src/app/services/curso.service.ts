@@ -11,7 +11,7 @@ import { Curso } from './../model/Curso';
 })
 export class CursoService {
   curso: Curso;  
-  apiUrl: string = environment.apiUrlBase + '/api/curso'
+  apiUrl: string = environment.apiUrlBase + '/api/cursos'
 
   constructor( private http: HttpClient) {  }  
   

@@ -3,7 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { LayoutComponent } from '../../shared/componets/layout/layout.component';
 import { AuthGuard } from '../../auth.guard';
 
-const routes: Routes = [  
+const routes: Routes = [
   {
     path: 'semestre',
     component: LayoutComponent,
@@ -34,7 +34,7 @@ const routes: Routes = [
       { path: '', redirectTo: 'lista', pathMatch: 'full' }
     ]
   },
-  
+
   {
     path: 'curso',
     component: LayoutComponent,
@@ -89,7 +89,7 @@ const routes: Routes = [
       {
         path: ':id',
         loadComponent: () =>
-        import('./disciplina/disciplina-form/disciplina-form.component')
+          import('./disciplina/disciplina-form/disciplina-form.component')
             .then(m => m.DisciplinaFormComponent),
         data: { roles: ['coordenador'] }
       },
@@ -120,8 +120,8 @@ const routes: Routes = [
       {
         path: ':id',
         loadComponent: () =>
-        import('./matriz/matriz-form/matriz-form.component')
-        .then(m => m.MatrizFormComponent),
+          import('./matriz/matriz-form/matriz-form.component')
+            .then(m => m.MatrizFormComponent),
         data: { roles: ['coordenador'] }
       },
       { path: '', redirectTo: 'lista', pathMatch: 'full' }

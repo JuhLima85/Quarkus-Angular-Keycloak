@@ -9,61 +9,62 @@
                 {{ mensagemSucesso }}
             </div>
             <div class="alert alert-danger" role="aler" *ngIf="mensagemErro">
-                {{  mensagemErro }}
+                {{ mensagemErro }}
             </div>
         </div>
     </div>
-<div class="row">
-    <div class="col-md-12">
-        <button class="btn btn-success" (click)="novoCadastro()">
-            <i class="fa fa-plus"></i> Novo
-        </button>
+    <div class="row">
+        <div class="col-md-12">
+            <button class="btn btn-success" (click)="novoCadastro()">
+                <i class="fa fa-plus"></i> Novo
+            </button>
+        </div>
     </div>
-</div>
-<br/>
-<div class="row">
-    <div class="col-md-12">
-        <table class="table table-condensed table-hover">
-            <thead>
-                <tr style="color:#555454">                                     
-                    <th>Nome</th>                      
-                    <th>ATIVO ?</th>                                   
-                    <th></th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr *ngFor="let curso of cursos"  [ngClass]="{ 'nao-membro': !curso.membro }">                   
-                    <td>{{ curso.nome }}</td>                    
-                    <td>{{ curso.email }}</td>
-                    <td>{{ curso.role }}</td>                                                      
-                    <td>
-                        <button class="btn btn-primary" [routerLink]="['/usuario/form', curso.id]" title="Editar">
-                            <i class="fa fa-edit"></i>
-                        </button>                                                 
-                        <button class="btn btn-danger ml-2"  (click)="exibirUsuarioModalDelet(curso)"
+    <br />
+    <div class="row">
+        <div class="col-md-12">
+            <table class="table table-condensed table-hover">
+                <thead>
+                    <tr style="color:#555454">
+                        <th>Nome</th>
+                        <th>ATIVO ?</th>
+                        <th>AÇÕES</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let curso of cursos" [ngClass]="{ 'nao-membro': !curso.membro }">
+                        <td>{{ curso.nome }}</td>
+                        <td>{{ curso.email }}</td>
+                        <td>{{ curso.role }}</td>
+                        <td>
+                            <button class="btn btn-primary" [routerLink]="['/usuario/form', curso.id]" title="Editar">
+                                <i class="fa fa-edit"></i>
+                            </button>
+                            <button class="btn btn-danger ml-2" (click)="exibirUsuarioModalDelet(curso)"
                                 data-toggle="modal" data-target="#modalDelecao" title="Excluir">
-                            <i class="fa fa-trash"></i>
-                        </button>        
-                        </td>                    
-                </tr>
-            </tbody>
-        </table>
+                                <i class="fa fa-trash"></i>
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
     </div>
-</div>
-<div id="modalDelecao" class="modal fade" role="dialog">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h4>Confirmação</h4>
-            </div>             
-            <div class="modal-body" *ngIf="cursoSelecionado">
-                Tem certeza que deseja excluir o usuário  {{ cursoSelecionado.nome }} ?           
-            </div>
-            <div class="modal-footer">
-                <button class="btn btn-success" (click)="deletarCliente()" data-dismiss="modal">Com certeza</button>
-                <button class="btn btn-danger" data-dismiss="modal">Não, Obrigada.</button>
+    <div id="modalDelecao" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4>Confirmação</h4>
+                </div>
+                <div class="modal-body" *ngIf="cursoSelecionado">
+                    Tem certeza que deseja excluir o usuário {{ cursoSelecionado.nome }} ?
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-success" (click)="deletarCurso()" data-dismiss="modal">Com certeza</button>
+                    <button class="btn btn-danger" data-dismiss="modal">Não, Obrigada.</button>
+                </div>
             </div>
         </div>
     </div>
-</div>
 </div>

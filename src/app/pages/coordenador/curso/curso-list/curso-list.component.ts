@@ -42,7 +42,7 @@ export class CursoListComponent  implements OnInit {
     this.cursoSelecionado = usuario;
   }
 
-  deletarCliente(){
+  deletarCurso(){
     this.service
     .deletar(this.cursoSelecionado)
     .subscribe(
@@ -52,23 +52,6 @@ export class CursoListComponent  implements OnInit {
                   },
       erro => this.mensagemErro = 'Ocorreu um erro ao deletar o usuário.')
   }  
-
-carregarHistorico(id: number): void { 
-  this.service.buscarCursoPorId(id).subscribe({
-    next: (usuario) => {      
-      this.router.navigate(['/historicos/visualizar-historico'], {
-        state: {
-          usuario: usuario               
-        }
-      });      
-      this.mensagemErro = null; 
-    },
-    error: () => {
-      this.mensagemErro = 'Ocorreu um erro ao carregar o histórico.';
-      this.mensagemSucesso = null; 
-    }
-  });
-}
 
 ngOnDestroy(): void {    
   document.getElementById('layoutSidenav_content')?.classList.remove('semestre-ajuste');

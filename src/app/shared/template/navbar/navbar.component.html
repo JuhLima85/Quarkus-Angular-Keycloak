@@ -9,8 +9,8 @@
       </a>      
     </div>
     <div class="sb-sidenav-credencial ms-auto d-flex align-items-center">      
-      <div class="small me-4">Usuário: <span class="credenciais">{{ usuarioLogado.nomeUsuario | titlecase}}</span></div>
-      <div class="small">Perfil: <span class="credenciais">{{ usuarioLogado.roles[0] | lowercase | titlecase }}</span></div>           
+      <div class="small me-4">Usuário: <span class="credenciais">{{ usuarioLogado?.nomeUsuario | titlecase}}</span></div>
+      <div class="small">Perfil: <span class="credenciais">{{ usuarioLogado?.roles?.[0] | lowercase | titlecase }}</span></div>           
     </div>        
   </nav>
   

@@ -11,8 +11,7 @@ export function initializeKeycloak(keycloak: KeycloakService) {
       initOptions: {
         onLoad: 'login-required',
         checkLoginIframe: false,
-        pkceMethod: 'S256',
-        // permite revalidar a sessão sem novo login
+        pkceMethod: 'S256',        
         silentCheckSsoRedirectUri: window.location.origin + '/assets/silent-check-sso.html'
       }
     });

@@ -13,20 +13,20 @@ import { FormsModule } from '@angular/forms';
   imports: [CommonModule, RouterModule, FormsModule]
 })
 export class DisciplinaListComponent implements OnInit {
-  disciplinas: Disciplina[] = [];  
+  disciplinas: Disciplina[] = [];
   disciplinaSelecionada: Disciplina;
   mensagemSucesso: string;
   mensagemErro: string;
-  
+
   constructor(
-    private service: DisciplinaService,      
+    private service: DisciplinaService,
     private router: Router,
-    ) { }
+  ) { }
 
   ngOnInit(): void {
     document.getElementById('layoutSidenav_content')?.classList.add('semestre-ajuste');
     this.service.buscarDisciplinas().subscribe({
-      next: (resposta) => {        
+      next: (resposta) => {
         this.disciplinas = resposta;
         console.log('Disciplina carregado pelo ID:', resposta);
       },
@@ -34,43 +34,26 @@ export class DisciplinaListComponent implements OnInit {
     });
   }
 
-  novoCadastro(){
+  novoCadastro() {
     this.router.navigate(['/coordenador/disciplina/form'])
   }
 
-  exibirUsuarioModalDelet(disciplina: Disciplina){
+  exibirUsuarioModalDelet(disciplina: Disciplina) {
     this.disciplinaSelecionada = disciplina;
   }
 
-  deletarCliente(){
+  deletarDisciplina() {
     this.service
-    .deletar(this.disciplinaSelecionada)
-    .subscribe(
-      response => {
-        this.mensagemSucesso = 'Disciplina deletado com sucesso!'
-        this.ngOnInit();
-                  },
-      erro => this.mensagemErro = 'Ocorreu um erro ao deletar o disciplina.')
-  }  
+      .deletar(this.disciplinaSelecionada)
+      .subscribe(
+        response => {
+          this.mensagemSucesso = 'Disciplina deletado com sucesso!'
+          this.ngOnInit();
+        },
+        erro => this.mensagemErro = 'Ocorreu um erro ao deletar o disciplina.')
+  } 
 
-carregarHistorico(id: number): void { 
-  this.service.buscarDisciplinaPorId(id).subscribe({
-    next: (usuario) => {      
-      this.router.navigate(['/historicos/visualizar-historico'], {
-        state: {
-          usuario: usuario               
-        }
-      });      
-      this.mensagemErro = null; 
-    },
-    error: () => {
-      this.mensagemErro = 'Ocorreu um erro ao carregar o histórico.';
-      this.mensagemSucesso = null; 
-    }
-  });
-}
-
-ngOnDestroy(): void {    
-  document.getElementById('layoutSidenav_content')?.classList.remove('semestre-ajuste');
-}
+  ngOnDestroy(): void {
+    document.getElementById('layoutSidenav_content')?.classList.remove('semestre-ajuste');
+  }
 }

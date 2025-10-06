@@ -12,7 +12,7 @@ import { FormsModule } from '@angular/forms';
   templateUrl: './semestre-from.component.html',
   styleUrls: ['./semestre-from.component.css']
 })
-export class SemestreFromComponent implements OnInit{
+export class SemestreFromComponent implements OnInit {
   semestre: Semestre;
   sucesso: boolean = false;
   mensagemSucesso: string = '';
@@ -48,7 +48,7 @@ export class SemestreFromComponent implements OnInit{
   voltarParaListagem() {
     this.router.navigate(['/coordenador/semestre/lista'])
   }
-  
+
   onSubmit() {
     console.error('Semestre onSubmit:', this.semestre);
     if (!this.semestre.ano || !this.semestre.periodo) {
@@ -90,7 +90,7 @@ export class SemestreFromComponent implements OnInit{
     }
   }
 
-  ngOnDestroy(): void {    
+  ngOnDestroy(): void {
     document.getElementById('layoutSidenav_content')?.classList.remove('semestre-ajuste');
   }
 }

@@ -6,7 +6,7 @@ import { Disciplina } from './../../../../model/Disciplina';
 import { DisciplinaService } from './../../../../services/disciplina.service';
 
 @Component({
-  standalone: true, 
+  standalone: true,
   selector: 'app-disciplina-form',
   templateUrl: './disciplina-form.component.html',
   styleUrls: ['./disciplina-form.component.css'],
@@ -48,6 +48,7 @@ export class DisciplinaFormComponent implements OnInit {
   voltarParaListagem() {
     this.router.navigate(['/coordenador/disciplina/lista'])
   }
+
   onSubmit() {
     console.error('Disciplina onSubmit:', this.disciplina);
     if (!this.disciplina.nome || !this.disciplina.codigo) {
@@ -89,7 +90,7 @@ export class DisciplinaFormComponent implements OnInit {
     }
   }
 
-  ngOnDestroy(): void {    
+  ngOnDestroy(): void {
     document.getElementById('layoutSidenav_content')?.classList.remove('semestre-ajuste');
-  }  
+  }
 }

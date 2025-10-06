@@ -6,7 +6,7 @@ import { MatrizCurricular } from './../../../../model/MatrizCurricular';
 import { MatrizService } from 'src/app/services/matriz.service';
 
 @Component({
-  standalone: true, 
+  standalone: true,
   selector: 'app-matriz-form',
   templateUrl: './matriz-form.component.html',
   styleUrls: ['./matriz-form.component.css'],
@@ -90,7 +90,7 @@ export class MatrizFormComponent implements OnInit {
     }
   }
 
-  ngOnDestroy(): void {    
+  ngOnDestroy(): void {
     document.getElementById('layoutSidenav_content')?.classList.remove('semestre-ajuste');
   }
 }

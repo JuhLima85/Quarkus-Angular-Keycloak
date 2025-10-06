@@ -48,6 +48,7 @@ export class CursoFormComponent implements OnInit {
   voltarParaListagem() {
     this.router.navigate(['/coordenador/curso/lista'])
   }
+
   onSubmit() {
     console.error('Curso onSubmit:', this.curso);
     if (!this.curso.nome || !this.curso.ativo) {
@@ -88,7 +89,8 @@ export class CursoFormComponent implements OnInit {
       });
     }
   }
-  ngOnDestroy(): void {    
+
+  ngOnDestroy(): void {
     document.getElementById('layoutSidenav_content')?.classList.remove('semestre-ajuste');
   }
 }

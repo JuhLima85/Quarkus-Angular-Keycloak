@@ -3,8 +3,6 @@ import { CommonModule } from '@angular/common';
 import { RouterModule, Router } from '@angular/router';
 import { Usuario } from '../../../model/usuario';
 import { UsuarioService } from 'src/app/services/clientes.service';
-import { ClienteServicoDtoService } from 'src/app/services/cliente-servico-dto.service';
-import { HistoricosService } from 'src/app/services/historicos.service';
 import { FormsModule } from '@angular/forms';
 
 @Component({
@@ -21,9 +19,7 @@ export class ClientesListaComponent implements OnInit {
   mensagemErro: string;
   
   constructor(
-    private service: UsuarioService,
-    private clienteServicoDtoService: ClienteServicoDtoService,
-    private historicoService: HistoricosService,    
+    private service: UsuarioService,     
     private router: Router,
     ) { }
 
@@ -45,7 +41,7 @@ export class ClientesListaComponent implements OnInit {
     this.usuarioSelecionado = usuario;
   }
 
-  deletarCliente(){
+  deletarUsuario(){
     this.service
     .deletar(this.usuarioSelecionado)
     .subscribe(
@@ -55,21 +51,4 @@ export class ClientesListaComponent implements OnInit {
                   },
       erro => this.mensagemErro = 'Ocorreu um erro ao deletar o usuário.')
   }  
-
-carregarHistorico(id: number): void { 
-  this.service.buscarUsuarioPorId(id).subscribe({
-    next: (usuario) => {      
-      this.router.navigate(['/historicos/visualizar-historico'], {
-        state: {
-          usuario: usuario               
-        }
-      });      
-      this.mensagemErro = null; 
-    },
-    error: () => {
-      this.mensagemErro = 'Ocorreu um erro ao carregar o histórico.';
-      this.mensagemSucesso = null; 
-    }
-  });
-}
 }

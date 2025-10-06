@@ -121,6 +121,12 @@ ul ol {
   margin-bottom: 0;
 }
 
+#layoutSidenav_content.semestre-ajuste {
+  padding-left: 0 !important;
+  margin-left: 0 !important;
+  padding-top: 0px !important;
+}
+
 dt {
   font-weight: 700;
 }

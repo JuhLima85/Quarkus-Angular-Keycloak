@@ -20,8 +20,9 @@ export class NavbarComponent implements OnInit {
     private router: Router
   ) { }
 
-  ngOnInit(): void {
-    this.usuarioLogado = this.authService.getUsuarioAutenticado();
+  async ngOnInit(): Promise<void> {
+    this.usuarioLogado = await this.authService.getUsuarioAutenticado();
+    console.log('Usuário logado:', this.usuarioLogado); 
   }
 
   logout(){

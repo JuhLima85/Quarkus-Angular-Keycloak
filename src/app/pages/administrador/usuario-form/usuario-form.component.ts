@@ -6,11 +6,11 @@ import { Usuario } from '../../../model/usuario';
 import { UsuarioService } from '../../../services/clientes.service';
 
 @Component({
-  selector: 'app-usuarios-form',
   standalone: true,
-  imports: [CommonModule, RouterModule, FormsModule],
+  selector: 'app-usuarios-form',
   templateUrl: './usuario-form.component.html',
-  styleUrls: ['./usuario-form.component.css']
+  styleUrls: ['./usuario-form.component.css'],
+  imports: [CommonModule, RouterModule, FormsModule],
 })
 export class UsuariosFormComponent implements OnInit {
   usuario: Usuario;
@@ -47,6 +47,7 @@ export class UsuariosFormComponent implements OnInit {
   voltarParaListagem() {
     this.router.navigate(['/usuario/lista'])
   }
+  
   onSubmit() {
     console.error('Usuario onSubmit:', this.usuario);
     if (!this.usuario.nome || !this.usuario.role) {

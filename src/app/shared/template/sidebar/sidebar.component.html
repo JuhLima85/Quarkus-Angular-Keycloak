@@ -2,7 +2,7 @@
     <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
         <div class="sb-sidenav-menu">
             <div class="nav">
-                <div *ngIf="temRole('ADMINISTRADOR')">
+                <div *ngIf="temRole('admin')">
                     <div class="sb-sidenav-menu-heading" style="color: #2f86e2;">Administrador</div>
                     <a class="nav-link" routerLink="/usuario/lista" style="color: #6e6e6e;">
                         <div class="sb-nav-link-icon">
@@ -11,41 +11,34 @@
                         Usuários
                     </a>
                 </div>
-                <div *ngIf="temRole('COORDENADOR')">
+                <div *ngIf="temRole('coordenador')">
                     <div class="sb-sidenav-menu-heading" style="color: #2f86e2;">Coordenador</div>
-                    <a class="nav-link" routerLink="/semestres" style="color: #6e6e6e;">
+                    <a class="nav-link" routerLink="/coordenador/semestre/lista" style="color: #6e6e6e;">
                         <div class="sb-nav-link-icon">
                             <i class="fas fa-calendar-alt" style="color: #2f86e2;"></i>
                         </div>
                         Semestres
                     </a>
-                    <a class="nav-link" routerLink="/cursos" style="color: #6e6e6e;">
+                    <a class="nav-link" routerLink="/coordenador/curso/lista" style="color: #6e6e6e;">
                         <div class="sb-nav-link-icon" style="color: #2f86e2;"><i class="fas fa-book"></i></div>
                         Cursos
                     </a>
-                    <a class="nav-link" routerLink="/disciplinas" style="color: #6e6e6e;">
+                    <a class="nav-link" routerLink="/coordenador/disciplina/lista" style="color: #6e6e6e;">
                         <div class="sb-nav-link-icon" style="color: #2f86e2;"><i class="fas fa-list"></i></div>
                         Disciplinas
                     </a>
-                    <a class="nav-link" routerLink="/matriz" style="color: #6e6e6e;">
+                    <a class="nav-link" routerLink="/coordenador/matriz/lista" style="color: #6e6e6e;">
                         <div class="sb-nav-link-icon" style="color: #2f86e2;"><i class="fas fa-table"></i></div>
                         Matriz Curricular
                     </a>
                 </div>
-                <div *ngIf="temRole('PROFESSOR') || temRole('ALUNO')">
+                <div *ngIf="temRole('professor') || temRole('aluno')">
                     <div class="sb-sidenav-menu-heading" style="color: #2f86e2;">Professor / Aluno</div>
                     <a class="nav-link" routerLink="/visualizar-matriz" style="color: #6e6e6e;">
                         <div class="sb-nav-link-icon" style="color: #2f86e2;"><i class="fas fa-eye"></i></div>
                         Visualizar Matriz
                     </a>
                 </div>
-
-                <!-- <a class="nav-link collapsed" routerLink="/servicos-prestados" data-toggle="collapse"
-                    data-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts"
-                    style="color: #6e6e6e;">
-                    <div class="sb-nav-link-icon"><i class="fa fa-clipboard" style="color:#2f86e2;"></i></div>
-                    Serviços Prestados
-                    </a>-->
 
                 <div class="sb-sidenav-menu-heading" style="color: #2f86e2;">Logout</div>
                 <a class="nav-link collapsed" (click)="logout();" href="#" data-toggle="collapse"
@@ -54,11 +47,11 @@
                     <div class="sb-nav-link-icon"><i class="fas fa-sign-out-alt" style="color: #2f86e2;"></i></div>
                     Sair
                 </a>
-                <a class="nav-link collapsed" routerLink="/credenciais/atualizar" data-toggle="collapse"
-                    data-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts"
-                    style="color: #6e6e6e;">
-                    <div class="sb-nav-link-icon"><i class="fas fa-cog" style="color: #2f86e2;"></i></div>
-                    Configuração
+                <a class="nav-link collapsed" data-toggle="collapse" data-target="#collapseLayouts"
+                    aria-expanded="false" aria-controls="collapseLayouts" style="color: #6e6e6e;" botton="50px">
+                    <div class="sb-nav-link-icon"><i class="fas fa-tag" style="color: #2f86e2;"
+                            style="color: #2f86e2;"></i></div>
+                    Versão 2.7.8
                 </a>
             </div>
         </div>

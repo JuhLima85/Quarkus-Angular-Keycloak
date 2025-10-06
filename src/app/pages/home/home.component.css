@@ -26,6 +26,10 @@ h1.mt-4 {
     z-index: -1;
 }
 
+.marg-top {
+    padding-top: 30px !important;
+}
+
 .pai {
     background-color: #6caafc;
 }

@@ -1,0 +1,20 @@
+.btn-custom-blue {
+    background-color: #28d7fa; 
+    color: #fff; 
+  }
+  
+  .btn-custom-blue:hover {
+    background-color: #0bb3d4; 
+    color: #fff; 
+  }
+ 
+tbody tr.nao-membro {  
+  background-color: rgba(178, 208, 247, 0.25); 
+
+}
+
+.table-hover tbody tr.nao-membro:hover {
+  background-color: rgba(178, 208, 247, 0.45);
+}
+
+  

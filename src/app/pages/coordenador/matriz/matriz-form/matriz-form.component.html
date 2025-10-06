@@ -1,0 +1,54 @@
+<h1 class="mt-4" style="color:#2f86e2">Matriz Curricular</h1>
+<ol class="breadcrumb mb-4" style="background-color:#b2d0f7">
+    <li class="breadcrumb-item active">{{ matrizCurricular.id ? 'Edição' : 'Cadastro' }}</li>
+</ol>
+<div class="container">
+    <form #clienteForm="ngForm" (ngSubmit)="onSubmit()">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="alert alert-success" role="alert" *ngIf="sucesso == true">
+                    {{ mensagemSucesso }}
+                </div>
+                <div class="alert alert-danger" role="alert" *ngFor="let erro of erros">
+                    {{ erro }}
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label>Curso:</label>
+                    <input type="text" class="form-control" [(ngModel)]="matrizCurricular.curso" name="curso" />
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label>Semestre:</label>
+                    <input type="text" class="form-control" [(ngModel)]="matrizCurricular.semestre" name="semestre">
+                </div>
+            </div>
+            <div class="col-md-12">
+                <div class="form-group">
+                    <label>Ativa?</label>
+                    <select class="form-control" [(ngModel)]="matrizCurricular.ativa" name="ativa">
+                        <option [ngValue]="true">Sim</option>
+                        <option [ngValue]="false">Não</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="row mt-3">
+            <div class="col-md-12 text-end">
+                <button type="submit" class="btn btn-success mx-1" *ngIf="!matrizCurricular.id">
+                    <i class="fa fa-save"></i> Salvar
+                </button>
+                <button type="submit" class="btn btn-primary mx-1" *ngIf="matrizCurricular.id">
+                    <i class="fa fa-sync-alt"></i> Atualizar
+                </button>
+                <button type="button" class="btn btn-danger mx-1" (click)="voltarParaListagem()">
+                    <i class="fa fa-arrow-alt-circle-left"></i> Voltar
+                </button>
+            </div>
+        </div>
+    </form>
+</div>

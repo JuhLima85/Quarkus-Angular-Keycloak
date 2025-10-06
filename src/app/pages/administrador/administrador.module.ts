@@ -4,13 +4,12 @@ import { FormsModule } from '@angular/forms';
 
 import { ClientesRoutingModule } from './administrador-routing.module';
 
-
 @NgModule({
   declarations: [],
   imports: [
     CommonModule,
     ClientesRoutingModule,
-   FormsModule,   
+    FormsModule,   
    
   ], exports: []
 })

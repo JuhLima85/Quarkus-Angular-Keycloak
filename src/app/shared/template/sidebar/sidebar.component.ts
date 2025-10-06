@@ -19,14 +19,25 @@ export class SidebarComponent implements OnInit {
     private authService: AuthService,
     private router: Router
   ) { }
+ 
+  async ngOnInit(): Promise<void> {   
+    const usuarioSalvo = sessionStorage.getItem('usuarioLogado');
+    if (usuarioSalvo) {
+      this.usuarioLogado = JSON.parse(usuarioSalvo);
+      console.log('Usuário recuperado da sessão:', this.usuarioLogado);
+    } else {     
+      this.usuarioLogado = await this.authService.getUsuarioAutenticado();
+      if (this.usuarioLogado) {       
+        sessionStorage.setItem('usuarioLogado', JSON.stringify(this.usuarioLogado));
+        console.log('Usuário salvo na sessão:', this.usuarioLogado);
+      }
+    }
+  }
 
-  async ngOnInit(): Promise<void> {
-    this.usuarioLogado = await this.authService.getUsuarioAutenticado();     
-  }  
-
-  logout(){
+  logout() {   
+    sessionStorage.removeItem('usuarioLogado');
     this.authService.encerrarSessao();
-    this.router.navigate(['/login'])
+    this.router.navigate(['/login']);
   }
  
   hideSidebar(): void {

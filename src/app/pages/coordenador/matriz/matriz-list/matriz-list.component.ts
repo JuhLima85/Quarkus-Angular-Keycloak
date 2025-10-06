@@ -17,6 +17,7 @@ export class MatrizListComponent implements OnInit {
   matrizCurricularSelecionada: MatrizCurricular;
   mensagemSucesso: string;
   mensagemErro: string;
+  usuarioLogado: any;   
 
   constructor(
     private service: MatrizService,
@@ -25,6 +26,11 @@ export class MatrizListComponent implements OnInit {
 
   ngOnInit(): void {
     document.getElementById('layoutSidenav_content')?.classList.add('semestre-ajuste');
+    const usuarioSalvo = sessionStorage.getItem('usuarioLogado');
+    if (usuarioSalvo) {
+      this.usuarioLogado = JSON.parse(usuarioSalvo);
+      console.log('Usuário logado recuperado:', this.usuarioLogado);
+    }
     this.service.buscarMatrizCurricular().subscribe({
       next: (resposta) => {
         this.matrizCurricularList = resposta;
@@ -51,6 +57,11 @@ export class MatrizListComponent implements OnInit {
           this.ngOnInit();
         },
         erro => this.mensagemErro = 'Ocorreu um erro ao deletar a Matriz curricular.')
+  }
+
+  temRole(role: string): boolean {
+    if (!this.usuarioLogado || !this.usuarioLogado.roles) return false;
+    return this.usuarioLogado.roles.some(r => r.includes(role));
   }
 
   ngOnDestroy(): void {

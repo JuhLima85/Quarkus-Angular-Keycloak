@@ -32,12 +32,10 @@ export class CursoFormComponent implements OnInit {
       this.id = params['id'];
       if (this.id) {
         this.service.buscarCursoPorId(this.id).subscribe({
-          next: (response) => {
-            console.log('Curso carregado pelo ID:', response);
+          next: (response) => {            
             this.curso = response;
           },
-          error: (errorResponse) => {
-            console.error('Erro ao buscar curso:', errorResponse);
+          error: (errorResponse) => {            
             this.curso = new Curso();
           }
         });
@@ -49,46 +47,46 @@ export class CursoFormComponent implements OnInit {
     this.router.navigate(['/coordenador/curso/lista'])
   }
 
-  onSubmit() {
-    console.error('Curso onSubmit:', this.curso);
-    if (!this.curso.nome || !this.curso.ativo) {
+  onSubmit() {        
+    const tratarErro = (errorResponse: any, acao: string) => {
       this.sucesso = false;
-      this.erros = ['Preencha todos os campos obrigatórios.'];
-      return;
-    }
+  
+      if (errorResponse?.error?.violations?.length) {        
+        this.erros = errorResponse.error.violations.map((v: any) => {         
+          const nomeCampo = v.field?.split('.')?.pop() || 'Campo';
+          const campoFormatado = nomeCampo.charAt(0).toUpperCase() + nomeCampo.slice(1);
+          return `${campoFormatado}: ${v.message}`;
+        });        
+      } else if (errorResponse?.error?.message) {
+        this.erros = [errorResponse.error.message];
+      } else {
+        this.erros = [`Erro ao ${acao} curso.`];
+      }
+    };
+     
     if (this.curso.id) {
-      this.service
-        .atualizar(this.curso)
-        .subscribe(response => {
+      this.service.atualizar(this.curso).subscribe({
+        next: () => {
           this.sucesso = true;
           this.mensagemSucesso = 'Cadastro atualizado com sucesso!';
           this.erros = null;
-        }, erroResponse => {
-          this.erros = ['Erro ao atualizar curso.']
-        })
-    } else {
+        },
+        error: (errorResponse) => tratarErro(errorResponse, 'atualizar')
+      });
+    }
+    
+    else {
       this.service.salvar(this.curso).subscribe({
         next: (response) => {
           this.sucesso = true;
           this.mensagemSucesso = 'Cadastro realizado com sucesso!';
           this.erros = null;
           this.curso = response;
-          console.log('Response: ', response);
         },
-        error: (errorResponse) => {
-          console.error("Erro completo recebido da API:", errorResponse);
-
-          if (errorResponse.error && errorResponse.error.message) {
-            this.erros = [errorResponse.error.message];
-          } else {
-            this.erros = ['Erro ao salvar curso.'];
-          }
-          console.log('Erro final exibido: ', this.erros);
-          this.sucesso = false;
-        }
+        error: (errorResponse) => tratarErro(errorResponse, 'salvar')
       });
     }
-  }
+  } 
 
   ngOnDestroy(): void {
     document.getElementById('layoutSidenav_content')?.classList.remove('semestre-ajuste');

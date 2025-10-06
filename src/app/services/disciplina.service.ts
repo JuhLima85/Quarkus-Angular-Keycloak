@@ -10,7 +10,7 @@ import { Disciplina } from './../model/Disciplina';
 })
 export class DisciplinaService {
   disciplina: Disciplina;  
-  apiUrl: string = environment.apiUrlBase + '/api/disciplina'
+  apiUrl: string = environment.apiUrlBase + '/api/disciplinas'
   
   constructor( private http: HttpClient) {  }  
   

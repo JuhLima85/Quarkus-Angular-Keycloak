@@ -20,16 +20,22 @@
                     <label>Nome:*</label>
                     <input type="text" class="form-control" [(ngModel)]="curso.nome" name="nome" />
                 </div>
-            </div>           
+            </div>
             <div class="col-md-6">
                 <div class="form-group">
-                  <label>Ativo?</label>
-                  <select class="form-control" [(ngModel)]="curso.ativo" name="ativo">
-                    <option [ngValue]="true">Sim</option>
-                    <option [ngValue]="false">Não</option>
-                  </select>
+                    <label>Código:*</label>
+                    <input type="text" class="form-control" [(ngModel)]="curso.codigo" name="codigo" required />
                 </div>
-              </div>             
+            </div>
+            <div class="col-md-12">
+                <div class="form-group">
+                    <label>Ativo?</label>
+                    <select class="form-control" [(ngModel)]="curso.ativo" name="ativo">
+                        <option [ngValue]="true">Sim</option>
+                        <option [ngValue]="false">Não</option>
+                    </select>
+                </div>
+            </div>
         </div>
         <div class="row mt-3">
             <div class="col-md-12 text-end">

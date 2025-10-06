@@ -5,6 +5,7 @@ import { LayoutComponent } from '../app/shared/componets/layout/layout.component
 import { AuthGuard } from './auth.guard';
 import { AcessoNegadoComponent } from './pages/acesso-negado/acesso-negado.component';
 
+//app-routing.module.ts
 const routes: Routes = [
   { path: 'acesso-negado', component: AcessoNegadoComponent },
   { 
@@ -12,12 +13,12 @@ const routes: Routes = [
     component: LayoutComponent, 
     canActivate: [AuthGuard], 
     children: [
-      { path:'home', component: HomeComponent },   
+      { path:'home', component: HomeComponent },  
+      { path: 'coordenador', loadChildren: () => import('./pages/coordenador/coordenador-routing.module').then(m => m.CoordenadorRoutingModule) }, 
       { path: '', redirectTo: '/home', pathMatch: 'full' }
     ]
   }
 ];
-
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

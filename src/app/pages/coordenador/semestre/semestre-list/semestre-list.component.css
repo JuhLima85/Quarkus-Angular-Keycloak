@@ -1,12 +1,3 @@
-h1.mt-4 {
-    color: #2f86e2;
-}
-
-.breadcrumb {
-    background-color: #b2d0f7;
-    color:rgb(59, 59, 59);
-}
-
 #layoutSidenav_content main { 
     padding-left: 0 !important;
     padding-right: 0 !important;
@@ -26,14 +17,4 @@ h1.mt-4 {
     z-index: -1;
 }
 
-.marg-top {
-    padding-top: 30px !important;
-}
-
-.pai {
-    background-color: #6caafc;
-}
-
-.sb-topnav {
-    background-color: #6caafc;
-}
+  

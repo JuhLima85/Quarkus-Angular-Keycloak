@@ -10,7 +10,7 @@ import { ClientesRoutingModule } from './administrador-routing.module';
   imports: [
     CommonModule,
     ClientesRoutingModule,
-   FormsModule,   
+    FormsModule,   
    
   ], exports: []
 })

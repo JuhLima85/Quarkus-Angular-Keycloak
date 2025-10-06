@@ -1,21 +1,3 @@
-/*import { KeycloakService } from 'keycloak-angular';
-
-export function initializeKeycloak(keycloak: KeycloakService) {
-  return () =>
-    keycloak.init({
-      config: {
-        url: 'http://localhost:8081',   // URL do seu Keycloak
-        realm: 'unifor',                     // seu Realm
-        clientId: 'frontend-unifor'          // seu Client ID
-      },
-      initOptions: {
-        onLoad: 'login-required',          // força login no início
-        checkLoginIframe: false,
-        pkceMethod: 'S256'
-      }
-    });
-}*/
-
 import { KeycloakService } from 'keycloak-angular';
 
 export function initializeKeycloak(keycloak: KeycloakService) {

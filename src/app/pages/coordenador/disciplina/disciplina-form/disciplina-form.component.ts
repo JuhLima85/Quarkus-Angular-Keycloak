@@ -2,42 +2,43 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Router, ActivatedRoute } from '@angular/router';
 import { FormsModule } from '@angular/forms';
-import { Usuario } from '../../../model/usuario';
-import { UsuarioService } from '../../../services/clientes.service';
+import { Disciplina } from './../../../../model/Disciplina';
+import { DisciplinaService } from './../../../../services/disciplina.service';
 
 @Component({
   standalone: true, 
-  selector: 'app-usuarios-form',   
-  templateUrl: './usuario-form.component.html',
-  styleUrls: ['./usuario-form.component.css'],
+  selector: 'app-disciplina-form',
+  templateUrl: './disciplina-form.component.html',
+  styleUrls: ['./disciplina-form.component.css'],
   imports: [CommonModule, RouterModule, FormsModule],
 })
-export class UsuariosFormComponent implements OnInit {
-  usuario: Usuario;
+export class DisciplinaFormComponent implements OnInit {
+  disciplina: Disciplina;
   sucesso: boolean = false;
   mensagemSucesso: string = '';
   erros: String[];
   id: number;
 
   constructor(
-    private service: UsuarioService,
+    private service: DisciplinaService,
     private router: Router,
     private activatedRoute: ActivatedRoute) {
-    this.usuario = new Usuario();
+    this.disciplina = new Disciplina();
   }
 
   ngOnInit(): void {
+    document.getElementById('layoutSidenav_content')?.classList.add('semestre-ajuste');
     this.activatedRoute.params.subscribe(params => {
       this.id = params['id'];
       if (this.id) {
-        this.service.buscarUsuarioPorId(this.id).subscribe({
+        this.service.buscarDisciplinaPorId(this.id).subscribe({
           next: (response) => {
-            console.log('Usuario carregado pelo ID:', response);
-            this.usuario = response;
+            console.log('Disciplina carregado pelo ID:', response);
+            this.disciplina = response;
           },
           error: (errorResponse) => {
-            console.error('Erro ao buscar usuario:', errorResponse);
-            this.usuario = new Usuario();
+            console.error('Erro ao buscar disciplina:', errorResponse);
+            this.disciplina = new Disciplina();
           }
         });
       }
@@ -45,32 +46,32 @@ export class UsuariosFormComponent implements OnInit {
   }
 
   voltarParaListagem() {
-    this.router.navigate(['/usuario/lista'])
+    this.router.navigate(['/coordenador/disciplina/lista'])
   }
   onSubmit() {
-    console.error('Usuario onSubmit:', this.usuario);
-    if (!this.usuario.nome || !this.usuario.role) {
+    console.error('Disciplina onSubmit:', this.disciplina);
+    if (!this.disciplina.nome || !this.disciplina.codigo) {
       this.sucesso = false;
       this.erros = ['Preencha todos os campos obrigatórios.'];
       return;
     }
-    if (this.usuario.id) {
+    if (this.disciplina.id) {
       this.service
-        .atualizar(this.usuario)
+        .atualizar(this.disciplina)
         .subscribe(response => {
           this.sucesso = true;
           this.mensagemSucesso = 'Cadastro atualizado com sucesso!';
           this.erros = null;
         }, erroResponse => {
-          this.erros = ['Erro ao atualizar usuário.']
+          this.erros = ['Erro ao atualizar disciplina.']
         })
     } else {
-      this.service.salvar(this.usuario).subscribe({
+      this.service.salvar(this.disciplina).subscribe({
         next: (response) => {
           this.sucesso = true;
           this.mensagemSucesso = 'Cadastro realizado com sucesso!';
           this.erros = null;
-          this.usuario = response;
+          this.disciplina = response;
           console.log('Response: ', response);
         },
         error: (errorResponse) => {
@@ -79,7 +80,7 @@ export class UsuariosFormComponent implements OnInit {
           if (errorResponse.error && errorResponse.error.message) {
             this.erros = [errorResponse.error.message];
           } else {
-            this.erros = ['Erro ao salvar usuário.'];
+            this.erros = ['Erro ao salvar disciplina.'];
           }
           console.log('Erro final exibido: ', this.erros);
           this.sucesso = false;
@@ -87,4 +88,8 @@ export class UsuariosFormComponent implements OnInit {
       });
     }
   }
+
+  ngOnDestroy(): void {    
+    document.getElementById('layoutSidenav_content')?.classList.remove('semestre-ajuste');
+  }  
 }

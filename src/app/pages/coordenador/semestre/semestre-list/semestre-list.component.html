@@ -1,4 +1,5 @@
-<h1 class="mt-4" style="color:#2f86e2">Usuários</h1>
+<div class="semestre-container">
+<h1 class="mt-4" style="color:#2f86e2">Semestre</h1>
 <ol class="breadcrumb mb-4" style="background-color:#b2d0f7">
     <li class="breadcrumb-item active" style="color:#6e6e6e">Novo Cadastro</li>
 </ol>
@@ -26,23 +27,23 @@
         <table class="table table-condensed table-hover">
             <thead>
                 <tr style="color:#555454">                                     
-                    <th>Nome</th>                   
-                    <th>E-mail</th>
-                    <th>PERFIL</th>      
+                    <th>NOME</th>                   
+                    <th>ANO</th>
+                    <th>PERÍODO</th>      
                     <th>AÇÕES</th>                                   
                     <th></th>
                 </tr>
             </thead>
             <tbody>
-                <tr *ngFor="let usuario of usuarios"  [ngClass]="{ 'nao-membro': !usuario.membro }">                   
-                    <td>{{ usuario.nome }}</td>                    
-                    <td>{{ usuario.email }}</td>
-                    <td>{{ usuario.role | lowercase }}</td>                                                      
+                <tr *ngFor="let semestre of semestres"  [ngClass]="{ 'nao-membro': !semestre.membro }">                   
+                    <td>{{ semestre.ano }}</td>                    
+                    <td>{{ semestre.periodo }}</td>
+                    <td>{{ semestre.ativo }}</td>                                                      
                     <td>
-                        <button class="btn btn-primary" [routerLink]="['/usuario/form', usuario.id]" title="Editar">
+                        <button class="btn btn-primary" [routerLink]="['/coordenador/semestre/form', semestre.id]" title="Editar">
                             <i class="fa fa-edit"></i>
                         </button>                                                 
-                        <button class="btn btn-danger ml-2"  (click)="exibirUsuarioModalDelet(usuario)"
+                        <button class="btn btn-danger ml-2"  (click)="exibirSemestreModalDelet(semestre)"
                                 data-toggle="modal" data-target="#modalDelecao" title="Excluir">
                             <i class="fa fa-trash"></i>
                         </button>                      
@@ -59,8 +60,8 @@
             <div class="modal-header">
                 <h4>Confirmação</h4>
             </div>             
-            <div class="modal-body" *ngIf="usuarioSelecionado">
-                Tem certeza que deseja excluir o usuário  {{ usuarioSelecionado.nome }} ?           
+            <div class="modal-body" *ngIf="semestreSelecionado">
+                Tem certeza que deseja excluir o período  {{ semestreSelecionado.periodo }} ?           
             </div>
             <div class="modal-footer">
                 <button class="btn btn-success" (click)="deletarCliente()" data-dismiss="modal">Com certeza</button>
@@ -68,5 +69,6 @@
             </div>
         </div>
     </div>
+</div>
 </div>
 </div>

@@ -8,14 +8,13 @@ import { HistoricosService } from 'src/app/services/historicos.service';
 import { FormsModule } from '@angular/forms';
 
 @Component({
-selector: 'app-usuarios-lista',
 standalone: true,
-imports: [CommonModule, RouterModule, FormsModule],
+selector: 'app-usuarios-lista',
 templateUrl: './usuario-lista.component.html',
-styleUrls: ['./usuario-lista.component.css']
+styleUrls: ['./usuario-lista.component.css'],
+imports: [CommonModule, RouterModule, FormsModule]
 })
 export class ClientesListaComponent implements OnInit {
-
   usuarios: Usuario[] = [];  
   usuarioSelecionado: Usuario;
   mensagemSucesso: string;

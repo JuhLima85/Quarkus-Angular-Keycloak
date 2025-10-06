@@ -1,6 +1,6 @@
-<h1 class="mt-4" style="color:#2f86e2">Usuário</h1>
+<h1 class="mt-4" style="color:#2f86e2">Curso</h1>
 <ol class="breadcrumb mb-4" style="background-color:#b2d0f7">
-    <li class="breadcrumb-item active">{{ usuario.id ? 'Edição' : 'Cadastro' }}</li>
+    <li class="breadcrumb-item active">{{ curso.id ? 'Edição' : 'Cadastro' }}</li>
 </ol>
 <div class="container">
     <form #clienteForm="ngForm" (ngSubmit)="onSubmit()">
@@ -18,33 +18,25 @@
             <div class="col-md-6">
                 <div class="form-group">
                     <label>Nome:*</label>
-                    <input type="text" class="form-control" [(ngModel)]="usuario.nome" name="nome" />
+                    <input type="text" class="form-control" [(ngModel)]="curso.nome" name="nome" />
                 </div>
-            </div>
+            </div>           
             <div class="col-md-6">
                 <div class="form-group">
-                    <label>E-mail:</label>
-                    <input type="text" class="form-control" [(ngModel)]="usuario.email" name="email">
+                  <label>Ativo?</label>
+                  <select class="form-control" [(ngModel)]="curso.ativo" name="ativo">
+                    <option [ngValue]="true">Sim</option>
+                    <option [ngValue]="false">Não</option>
+                  </select>
                 </div>
-            </div>
-            <div class="col-md-12">
-                <div class="form-group">
-                    <label>Perfil de Acesso:*</label>
-                    <select class="form-control" [(ngModel)]="usuario.role" name="role">
-                        <option value="ADMINISTRADOR">Administrador</option>
-                        <option value="COORDENADOR">Coordenador</option>
-                        <option value="PROFESSOR">Professor</option>
-                        <option value="ALUNO">Aluno</option>
-                    </select>
-                </div>
-            </div>
+              </div>             
         </div>
         <div class="row mt-3">
             <div class="col-md-12 text-end">
-                <button type="submit" class="btn btn-success mx-1" *ngIf="!usuario.id">
+                <button type="submit" class="btn btn-success mx-1" *ngIf="!curso.id">
                     <i class="fa fa-save"></i> Salvar
                 </button>
-                <button type="submit" class="btn btn-primary mx-1" *ngIf="usuario.id">
+                <button type="submit" class="btn btn-primary mx-1" *ngIf="curso.id">
                     <i class="fa fa-sync-alt"></i> Atualizar
                 </button>
                 <button type="button" class="btn btn-danger mx-1" (click)="voltarParaListagem()">

@@ -6,9 +6,8 @@ import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { TemplateModule } from '../app/shared/template/template.module';
-import { HomeComponent } from './../app/pages/home/home.component'
-import { AdministradorModule } from './../app/pages/administrador/administrador.module';
-import {UsuarioService} from './services/clientes.service';
+import { HomeComponent } from './../app/pages/home/home.component';
+import {UsuarioService} from './services/usuario.service';
 import { LayoutComponent } from './../app/shared/componets/layout/layout.component';
 import { AuthService } from './services/auth.service';
 import { KeycloakAngularModule, KeycloakService } from 'keycloak-angular';
@@ -26,8 +25,7 @@ import { TokenInterceptor } from './token.interceptor';
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
-    TemplateModule, 
-    AdministradorModule,    
+    TemplateModule,    
     FormsModule,     
     KeycloakAngularModule,    
   ],

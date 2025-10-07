@@ -21,8 +21,7 @@ export class NavbarComponent implements OnInit {
   ) { }
 
   async ngOnInit(): Promise<void> {
-    this.usuarioLogado = await this.authService.getUsuarioAutenticado();
-    console.log('Usuário logado:', this.usuarioLogado); 
+    this.usuarioLogado = await this.authService.getUsuarioAutenticado();   
   }
 
   logout(){

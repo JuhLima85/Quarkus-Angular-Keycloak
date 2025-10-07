@@ -7,14 +7,13 @@ import { AuthService } from './services/auth.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit{
-  title = 'clientes-app'; 
+  title = 'Sistema Unifor'; 
 
   usuario: any;
 
   constructor(private auth: AuthService) {}
 
   async ngOnInit() {
-    this.usuario = await this.auth.getUsuarioAutenticado();
-    console.log('Usuário autenticado:', this.usuario);
+    this.usuario = await this.auth.getUsuarioAutenticado();    
   }
 }

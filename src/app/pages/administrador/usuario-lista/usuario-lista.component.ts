@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Router } from '@angular/router';
 import { Usuario } from '../../../model/usuario';
-import { UsuarioService } from 'src/app/services/clientes.service';
+import { UsuarioService } from 'src/app/services/usuario.service';
 import { FormsModule } from '@angular/forms';
 
 @Component({
@@ -33,7 +33,7 @@ export class ClientesListaComponent implements OnInit {
   }
 
   novoCadastro(){
-    this.router.navigate(['/usuario/form'])
+    this.router.navigate(['administrador/usuario/form'])
   }
 
   exibirUsuarioModalDelet(usuario: Usuario){

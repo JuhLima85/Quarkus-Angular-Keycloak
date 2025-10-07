@@ -33,12 +33,10 @@ export class MatrizFormComponent implements OnInit {
       this.id = params['id'];
       if (this.id) {
         this.service.buscarMatrizCurricularPorId(this.id).subscribe({
-          next: (response) => {
-            console.log('Matriz Curricular carregado pelo ID:', response);
+          next: (response) => {            
             this.matrizCurricular = response;
           },
-          error: (errorResponse) => {
-            console.error('Erro ao buscar matrizCurricular:', errorResponse);
+          error: (errorResponse) => {            
             this.matrizCurricular = new MatrizCurricular();
           }
         });

@@ -23,13 +23,11 @@ export class SidebarComponent implements OnInit {
   async ngOnInit(): Promise<void> {   
     const usuarioSalvo = sessionStorage.getItem('usuarioLogado');
     if (usuarioSalvo) {
-      this.usuarioLogado = JSON.parse(usuarioSalvo);
-      console.log('Usuário recuperado da sessão:', this.usuarioLogado);
+      this.usuarioLogado = JSON.parse(usuarioSalvo);      
     } else {     
       this.usuarioLogado = await this.authService.getUsuarioAutenticado();
       if (this.usuarioLogado) {       
-        sessionStorage.setItem('usuarioLogado', JSON.stringify(this.usuarioLogado));
-        console.log('Usuário salvo na sessão:', this.usuarioLogado);
+        sessionStorage.setItem('usuarioLogado', JSON.stringify(this.usuarioLogado));        
       }
     }
   }

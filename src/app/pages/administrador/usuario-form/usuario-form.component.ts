@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { RouterModule, Router, ActivatedRoute } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { Usuario } from '../../../model/usuario';
-import { UsuarioService } from '../../../services/clientes.service';
+import { UsuarioService } from '../../../services/usuario.service';
 
 @Component({
   standalone: true,
@@ -43,7 +43,7 @@ export class UsuariosFormComponent implements OnInit {
   }
 
   voltarParaListagem() {
-    this.router.navigate(['/usuario/lista'])
+    this.router.navigate(['administrador/usuario/lista'])
   }  
 
   onSubmit() {   

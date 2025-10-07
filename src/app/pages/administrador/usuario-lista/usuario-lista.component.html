@@ -39,7 +39,7 @@
                         <td>{{ usuario.email }}</td>
                         <td>{{ usuario.role | lowercase }}</td>
                         <td>
-                            <button class="btn btn-primary" [routerLink]="['/usuario/form', usuario.id]" title="Editar">
+                            <button class="btn btn-primary" [routerLink]="['/administrador/usuario/form', usuario.id]" title="Editar">
                                 <i class="fa fa-edit"></i>
                             </button>
                             <button class="btn btn-danger ml-2" (click)="exibirUsuarioModalDelet(usuario)"

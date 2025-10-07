@@ -1,7 +1,9 @@
 <h1 class="mt-4" style="color:#2f86e2">Matriz Curricular</h1>
 <ol class="breadcrumb mb-4" style="background-color:#b2d0f7">
-    <li class="breadcrumb-item active" style="color:#6e6e6e">Novo Cadastro</li>
-</ol>
+    <li class="breadcrumb-item active" style="color:#6e6e6e">
+      {{ temRole('coordenador') ? 'Novo Cadastro' : 'Lista de Matrizes' }}
+    </li>
+  </ol>
 <div class="container">
     <div class="row">
         <div class="col-md-12">

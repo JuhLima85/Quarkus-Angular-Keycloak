@@ -28,13 +28,11 @@ export class MatrizListComponent implements OnInit {
     document.getElementById('layoutSidenav_content')?.classList.add('semestre-ajuste');
     const usuarioSalvo = sessionStorage.getItem('usuarioLogado');
     if (usuarioSalvo) {
-      this.usuarioLogado = JSON.parse(usuarioSalvo);
-      console.log('Usuário logado recuperado:', this.usuarioLogado);
+      this.usuarioLogado = JSON.parse(usuarioSalvo);     
     }
     this.service.buscarMatrizCurricular().subscribe({
       next: (resposta) => {
-        this.matrizCurricularList = resposta;
-        console.log('Matriz curricular carregada pelo ID:', resposta);
+        this.matrizCurricularList = resposta;        
       },
       error: (err) => console.error('Erro ao buscar matriz curricular:', err)
     });

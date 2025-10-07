@@ -11,7 +11,7 @@ import { Semestre } from './../model/Semestre';
 export class SemestreService {
   
   semestre: Semestre;  
-  apiUrl: string = environment.apiUrlBase + '/api/api/semestres';  
+  apiUrl: string = environment.apiUrlBase + '/api/semestres';  
 
   constructor( private http: HttpClient) {  }  
   

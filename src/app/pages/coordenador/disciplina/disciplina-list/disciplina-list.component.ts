@@ -46,10 +46,10 @@ export class DisciplinaListComponent implements OnInit {
       .deletar(this.disciplinaSelecionada)
       .subscribe(
         response => {
-          this.mensagemSucesso = 'Disciplina deletado com sucesso!'
+          this.mensagemSucesso = 'Disciplina deletada com sucesso!'
           this.ngOnInit();
         },
-        erro => this.mensagemErro = 'Ocorreu um erro ao deletar o disciplina.')
+        erro => this.mensagemErro = 'Ocorreu um erro ao deletar a disciplina.')
   } 
 
   ngOnDestroy(): void {
